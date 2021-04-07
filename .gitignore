@@ -1,0 +1,9 @@
+config.py
+*.py[cod]
+.idea
+
+venv
+temp
+logs
+tests
+

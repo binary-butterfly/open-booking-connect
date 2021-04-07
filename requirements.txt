@@ -1,0 +1,13 @@
+hypercorn
+Quart
+Flask-Script
+Flask-Failsafe
+aiohttp
+aioredis
+aio-pika
+cryptography
+pytz<2021.0
+tortoise-orm
+aiomysql
+python-dateutil
+websockets

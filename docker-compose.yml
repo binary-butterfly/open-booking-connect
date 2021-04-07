@@ -1,0 +1,66 @@
+version: '3'
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask
+    ports:
+      - 5001:5000
+    container_name: openbikebox-connect-flask
+    volumes:
+      - .:/app
+    networks:
+      openbikebox-connect:
+        aliases:
+        - flask
+    entrypoint: ["python3", "runserver.py"]
+
+  mysql:
+    image: mariadb
+    container_name: openbikebox-connect-mysql
+    volumes:
+      - .:/app
+      - openbikebox_connect_mysql:/var/lib/mysql
+    networks:
+      openbikebox-connect:
+        aliases:
+        - mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: connect
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: openbikebox-connect-phpmyadmin
+    ports:
+      - 8083:80
+    networks:
+      openbikebox-connect:
+        aliases:
+        - phpmyadmin
+    environment:
+      PMA_USER: root
+      PMA_PASSWORD: root
+      PMA_HOST: mysql
+
+  redis:
+    image: redis:latest
+    container_name: openbikebox-connect-redis
+    networks:
+      openbikebox-connect:
+        aliases:
+        - redis
+
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: openbikebox-connect-rabbitmq
+    networks:
+      openbikebox-connect:
+        aliases:
+        - rabbitmq
+
+volumes:
+  openbikebox_connect_mysql:
+
+networks:
+  openbikebox-connect:
