@@ -32,8 +32,8 @@ class Client(Model, Base):
     modified = fields.DatetimeField(auto_now=True)
 
     remote_id = fields.BigIntField(null=True, default=None)
-    uid = fields.CharField(max_length=255, index=True, null=True, default=None)
-    basicauth_password = fields.CharField(max_length=255, null=True, default=None)
+    uid = fields.CharField(max_length=64, index=True, default=None)
+    basicauth_password = fields.CharField(max_length=64, null=True, default=None)
     ip = fields.CharField(max_length=64, null=True, default=None)
     connection = fields.CharEnumField(enum_type=Connection, null=True, default=None)
     connection_change = fields.DatetimeField(null=True, default=None)

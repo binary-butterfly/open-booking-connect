@@ -31,7 +31,7 @@ class Resource(Model, Base):
     created = fields.DatetimeField(auto_now_add=True)
     modified = fields.DatetimeField(auto_now=True)
 
-    uid = fields.CharField(max_length=255, index=True, null=True, default=None)
+    uid = fields.CharField(max_length=64, index=True, default=None)
     client_id = fields.BigIntField()
     remote_id = fields.BigIntField(null=True, default=None)
     status = fields.CharEnumField(enum_type=ResourceStatus, null=True, default=None)
