@@ -2,12 +2,13 @@ hypercorn
 Quart
 Flask-Script
 Flask-Failsafe
+python-dotenv
 aiohttp
 aioredis
 aio-pika
 cryptography
 pytz<2021.0
 tortoise-orm
-aiomysql
 python-dateutil
 websockets
+asyncmy

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 """
-openbikebox connect
+open booking connect
 Copyright (c) 2021, binary butterfly GmbH
 Use of this source code is governed by an MIT-style license that can be found in the LICENSE file.
 """
@@ -16,9 +16,13 @@ class Connection(Enum):
 
 
 class MessageType(Enum):
+    BootNotification = 'BootNotification'
     RemoteChangeResourceStatus = 'RemoteChangeResourceStatus'
     ResourceStatusChange = 'ResourceStatusChange'
     Authorize = 'Authorize'
+    DoorStatus = 'DoorStatus'
+    Exception = 'Exception'
+    ConnectionChange = 'ConnectionChange'
 
 
 class ResourceStatus(Enum):

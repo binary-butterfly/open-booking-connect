@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 """
-openbikebox connect
+open booking connect
 Copyright (c) 2021, binary butterfly GmbH
 Use of this source code is governed by an MIT-style license that can be found in the LICENSE file.
 """
@@ -12,7 +12,7 @@ import os
 class BaseConfig:
     INSTANCE_FOLDER_PATH = os.path.join('/tmp', 'instance')
 
-    PROJECT_NAME = "openbikebox-connect"
+    PROJECT_NAME = "open-booking-connect"
     PROJECT_VERSION = '0.1.0'
 
     DEBUG = False

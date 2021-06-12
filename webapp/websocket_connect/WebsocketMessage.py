@@ -27,12 +27,24 @@ class WebsocketMessage:
     async def reply(self, data: dict):
         await put_reply(self.client_id, self.type, self.uid, data)
 
+    async def handleBootNotification(self):
+        await self.reply({})
+
     async def handleAuthorize(self):
         await self.reply({
             'status': 'ok',
             'request_uid': self.data['request_uid'],
             'resource_uid': 'resource-%s' % randint(1, 4)
         })
+
+    async def handleDoorStatus(self):
+        await self.reply({})
+
+    async def handleConnectionChange(self):
+        await self.reply({})
+
+    async def handleException(self):
+        await self.reply({})
 
     async def handleResourceStatusChange(self):
         resource = await Resource.filter(uid=self.data['resource_uid']).first()
