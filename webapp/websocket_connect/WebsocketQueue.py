@@ -13,8 +13,9 @@ from typing import Union
 from dataclasses import dataclass
 from quart import copy_current_app_context
 from ..extensions import queue, redis, logger, connected_websockets
-from ..common.enums import MessageType
+from ..common.enums import MessageType, MessageState
 from ..common.misc import DefaultJSONEncoder
+from ..models import Message
 
 
 async def put_request(client_id: int, message_type: MessageType, data: Union[dict, dataclass]):
@@ -28,6 +29,15 @@ async def put_request(client_id: int, message_type: MessageType, data: Union[dic
         return
     if type(data) is dataclass:
         data = data.asdict()
+
+    message = Message()
+    message.state = MessageState.reply
+    message.client_id = client_id
+    message.type = message_type
+    message.uid = message.uid
+    message.data = data
+    await message.save()
+
     await queue.put_sub(
         websocket_client_uid,
         json.dumps({
@@ -57,6 +67,13 @@ async def put_reply(client_id: int, message_type: MessageType, message_uid: str,
     websocket_client_uid = await connected_websockets.get(client_id)
     if not websocket_client_uid:
         return
+    message = Message()
+    message.state = MessageState.reply
+    message.client_id = client_id
+    message.type = message_type
+    message.uid = message_uid
+    message.data = data
+    await message.save()
     await queue.put_sub(
         websocket_client_uid,
         json.dumps({

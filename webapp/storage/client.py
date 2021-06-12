@@ -31,6 +31,7 @@ class Client(Model, Base):
     created = fields.DatetimeField(auto_now_add=True)
     modified = fields.DatetimeField(auto_now=True)
 
+    access_id = fields.BigIntField(null=True, default=None)
     remote_id = fields.BigIntField(null=True, default=None)
     uid = fields.CharField(max_length=64, index=True, default=None)
     basicauth_password = fields.CharField(max_length=64, null=True, default=None)

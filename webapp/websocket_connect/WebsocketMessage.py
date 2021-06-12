@@ -7,20 +7,24 @@ Use of this source code is governed by an MIT-style license that can be found in
 """
 
 from random import randint
-from ..common.enums import MessageType
+from ..common.enums import MessageType, MessageState
 from .WebsocketQueue import put_reply
-from ..models import Resource
+from ..models import Resource, Message
 
 
 class WebsocketMessage:
     def __init__(self, client_id, message):
         self.client_id = client_id
         self.type = getattr(MessageType, message['type'])
-        self.state = message['state']
+        self.state = getattr(MessageState, message['state'])
         self.uid = message['uid']
         self.data = message['data']
 
     async def run(self):
+        message = Message()
+        for field in ['client_id', 'type', 'state', 'uid', 'data']:
+            setattr(message, field, getattr(self, field))
+        await message.save()
         if hasattr(self, 'handle%s' % self.type.name):
             await getattr(self, 'handle%s' % self.type.name)()
 

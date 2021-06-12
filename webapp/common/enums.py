@@ -25,6 +25,11 @@ class MessageType(Enum):
     ConnectionChange = 'ConnectionChange'
 
 
+class MessageState(Enum):
+    request = 'request'
+    reply = 'reply'
+
+
 class ResourceStatus(Enum):
     open = 'open'
     closed = 'closed'

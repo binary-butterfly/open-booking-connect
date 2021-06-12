@@ -9,3 +9,4 @@ Use of this source code is governed by an MIT-style license that can be found in
 
 from .client import Client
 from .resource import Resource
+from .message import Message
