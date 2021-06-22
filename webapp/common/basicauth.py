@@ -20,7 +20,7 @@ def auth_required(*users):
             auth = request.authorization
             if auth is None or auth.type != "basic":
                 abort(403)
-            if auth.username not in users or auth.username not in current_app.config['BASICAUTH']:
+            if (len(users) > 0 and auth.username not in users) or auth.username not in current_app.config['BASICAUTH']:
                 abort(403)
             if not compare_digest(sha256(auth.password.encode()).hexdigest(), current_app.config["BASICAUTH"][auth.username]):
                 abort(403)

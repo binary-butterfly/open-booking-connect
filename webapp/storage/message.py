@@ -18,7 +18,7 @@ class Message(Model, Base):
         table = "message"
 
     db_fields = [
-        'created', 'modified', 'client_id', 'uid', 'type', 'state', 'data'
+        'id', 'created', 'modified', 'client_id', 'uid', 'type', 'state', 'data'
     ]
 
     db_field_datetime = [
