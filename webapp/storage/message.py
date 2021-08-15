@@ -10,6 +10,7 @@ import json
 from tortoise.models import Model
 from tortoise import fields
 from ..common.enums import MessageType, MessageState
+from webapp.common.misc import DefaultJSONEncoder
 from .base import Base
 
 
@@ -44,4 +45,4 @@ class Message(Model, Base):
 
     @data.setter
     def data(self, data: dict):
-        self._data = json.dumps(data)
+        self._data = json.dumps(data, cls=DefaultJSONEncoder)

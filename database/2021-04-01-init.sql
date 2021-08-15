@@ -21,7 +21,7 @@ CREATE TABLE `resource` (
   `uid` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remote_id` bigint(20) DEFAULT NULL,
   `client_id` bigint(20) DEFAULT NULL,
-  `status` enum('open','closed','unknown') COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `status` enum('open','closed','opening','closing','unknown') COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ALTER TABLE `client`

@@ -11,7 +11,7 @@ CREATE TABLE `message` (
   `modified` datetime NOT NULL,
   `client_id` bigint(20) NOT NULL,
   `uid` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` enum('BootNotification','RemoteChangeResourceStatus','Authorize','DoorStatus','Exception','ConnectionChange') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('BootNotification','RemoteChangeResourceStatus','Authorize','DoorStatus','Exception','ConnectionChange','ResourceStatusChange') COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` enum('request','reply') COLLATE utf8mb4_unicode_ci NOT NULL,
   `data` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

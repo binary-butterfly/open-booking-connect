@@ -4,7 +4,7 @@ Flask-Script
 Flask-Failsafe
 python-dotenv
 aiohttp
-aioredis
+aioredis<2.0
 aio-pika
 cryptography
 pytz<2021.0

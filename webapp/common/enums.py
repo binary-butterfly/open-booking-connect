@@ -32,7 +32,9 @@ class MessageState(Enum):
 
 class ResourceStatus(Enum):
     open = 'open'
+    opening = 'opening'
     closed = 'closed'
+    closing = 'closing'
     unknown = 'unknown'
 
 

@@ -34,7 +34,7 @@ async def put_request(client_id: int, message_type: MessageType, data: Union[dic
     message.state = MessageState.reply
     message.client_id = client_id
     message.type = message_type
-    message.uid = message.uid
+    message.uid = message_uid
     message.data = data
     await message.save()
 
