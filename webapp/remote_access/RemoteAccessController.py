@@ -27,7 +27,7 @@ async def backend_resource_change_status(remote_resource_id, status):
     if not resource:
         return await jsonify_error('invalid resource')
     await put_request(
-        resource.id,
+        resource.client_id,
         MessageType.RemoteChangeResourceStatus,
         RemoteChangeResourceStatus(
             uid=resource.uid,
